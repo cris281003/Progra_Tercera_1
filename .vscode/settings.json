@@ -28,5 +28,6 @@
         "Telefono",
         "tenga",
         "titulo"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
