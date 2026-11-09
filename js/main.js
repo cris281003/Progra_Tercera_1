@@ -27,3 +27,44 @@ titulos.forEach(titulo => {
     });
 });
 
+const servicios = [
+    { titulo: "Lavado",   precio: 8000,  img: "img/auto1.jpg" },
+    { titulo: "Pulido",   precio: 15000, img: "img/auto2.png" },
+    { titulo: "Encerado", precio: 12000, img: "img/auto3.webp" }
+  // agrega más objetos hasta tener las seis tarjetas
+];
+
+const contenedor = document.querySelector("#cards");
+
+function pintarCards(lista) {
+  contenedor.innerHTML = "";           // limpiar antes de dibujar
+    lista.forEach(s => {
+    const art = document.createElement("article");
+    art.classList.add("tarjeta");
+    art.innerHTML = `
+    <img src="${s.img}" alt="${s.titulo}">
+    <h3>${s.titulo}</h3>
+    <p>₡${s.precio}</p>`;
+    contenedor.appendChild(art);
+    });
+}
+
+if (contenedor) pintarCards(servicios);   // solo en la página que tiene #cards
+
+const form = document.querySelector("formulario");
+
+if (form) {
+    form.addEventListener("submit", (e) => {
+        const nombre = form.nombre.value.trim();
+        const email = form.email.value.trim();
+        let errores = [];
+
+    if (nombre === "") errores.push("El nombre es obligatorio.");
+    if (!email.includes("@")) errores.push("El correo no es válido.");
+
+    if (errores.length > 0) {
+      e.preventDefault();                       // detiene el envío
+    document.querySelector("#mensajes").textContent = errores.join(" ");
+    }
+    });
+}
