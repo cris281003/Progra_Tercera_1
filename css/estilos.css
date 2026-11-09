@@ -158,7 +158,12 @@ footer a{
 .accordion .item.activo .contenido { display: block; }
 
 /* base: celular */
-.menu { display: none; }  /* lo abrirá la hamburguesa */
+.menu { display: none; } /* lo abrirá la hamburguesa */
+
+.header {flex-wrap: wrap;}
+.menu {width: 100%;}
+.menu.abierto{display: block;}
+.menu.abierto ul{flex-direction: column; padding-top: 1rem;}
 
 @media (min-width: 501px) {
     .portada h1 { font-size: 2.1rem; }
@@ -178,4 +183,12 @@ footer a{
     .menu { display: block; }  /* menú normal en pantalla grande */
     .hamburguesa { display: none; }
     .portada h1 { font-size: 2.6rem; }
+    .menu { display: block; width: auto; }   /* siempre visible en escritorio */
+    .hamburguesa { display: none; }
+    .menu.abierto ul { flex-direction: row; padding-top: 0; }
 }
+
+.hamburguesa.activo span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburguesa.activo span:nth-child(2) { opacity: 0; }
+.hamburguesa.activo span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
